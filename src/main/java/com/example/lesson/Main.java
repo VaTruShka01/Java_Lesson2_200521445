@@ -7,5 +7,8 @@ public class Main {
 
         System.out.println(card1 + " colour: " + card1.getColour());
         System.out.println(card1 + " value: " + card1.getCardValue());
+
+        DeckOfCards deck = new DeckOfCards();
+
     }
 }
