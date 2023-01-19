@@ -45,6 +45,7 @@ public class Card {
      * @param faceName "2", "3", "4" ... "10 ", "Jack" ...
      */
     public void setFaceName(String faceName) {
+        faceName = faceName.trim().toLowerCase();
         if (getValidFaceNames().contains(faceName))
             this.faceName = faceName;
         else
@@ -54,6 +55,11 @@ public class Card {
     }
 
     public void setSuit(String suit){
+        suit = suit.trim().toLowerCase();
+
+        if(suit.charAt(suit.length() - 1) != 's')
+            suit = suit + "s";
+
         if (getValidSuits().contains(suit))
             this.suit = suit;
         else
@@ -66,4 +72,29 @@ public class Card {
     public String whatCard(){
         return faceName + " of " + suit;
     }
+
+
+    /**
+     * This method returns the colour of the cards, red for diamonds and hearts, black for spades or clubs
+     */
+
+    public String getColour(){
+        if(suit.equals("hearts")|| suit.equals("diamonds"))
+            return "red";
+        else
+            return "black";
+    }
+
+    /**
+     * This method returns the value of the card, assuming ACe is highest
+     */
+
+    public int getCardValue(){
+        List<String> faceNames = getValidFaceNames();
+        int indexOFCard = faceNames.indexOf(faceName);
+        return indexOFCard + 2;
+
+
+    }
+
 }
